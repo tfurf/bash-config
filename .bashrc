@@ -5,16 +5,13 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-# don't put duplicate lines in the history. See bash(1) for more options
-# ... or force ignoredups and ignorespace
-HISTCONTROL=ignoredups:ignorespace
-
-# append to the history file, don't overwrite it
+# History options.
+HISTCONTROL=ignoredups:ignorespace:erasedups
 shopt -s histappend
-
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTIGNORE="&:ls:ll:cd *:[ ]*:$HISTIGNORE"
 HISTSIZE=10000
-HISTFILESIZE=10000
+HISTFILESIZE=200000
+export HISTCONTROL HISTIGNORE HISTSIZE HISTFILESIZE
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -57,6 +54,7 @@ else
     PS1='[\T]${debian_chroot:+($debian_chroot)}\u@\h:\W\$ '
 fi
 unset color_prompt force_color_prompt
+export PS1
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -95,19 +93,17 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-# And some things (like python it seems), use this .local/bin
-if [ -d "/sbin" ] ; then
-    PATH="/sbin:$PATH"
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH";
+    export PATH
 fi
 
-# And some things (like python it seems), use this .local/bin
+# set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
+    PATH="$HOME/.local/bin:$PATH";
+    export PATH
 fi
 
-# For Powerline https://powerline.readthedocs.org/
-#
-#if [ -f $HOME/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh ]; then
-#  . $HOME/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh 
-#fi
 
+#alias roslog=cd $(roslaunch-logs)
