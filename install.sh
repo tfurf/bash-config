@@ -7,7 +7,7 @@ t=".bash_aliases \
 
 for f in ${t}; do
   [[ -f ${cwd}/${f} ]] && { 
-    ln -svT ${cwd}/${f} ~/${f} ;
+    ln -vT ${cwd}/${f} ~/${f} ;
     echo ${f};
   }
 done;
