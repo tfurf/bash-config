@@ -8,7 +8,7 @@
 # History options.
 HISTCONTROL=ignoredups:ignorespace:erasedups
 shopt -s histappend
-HISTIGNORE="&:ls:ll:cd *:[ ]*:$HISTIGNORE"
+HISTIGNORE="&:ls:ll:cd *:[ ]*:git *:$HISTIGNORE"
 HISTSIZE=10000
 HISTFILESIZE=200000
 export HISTCONTROL HISTIGNORE HISTSIZE HISTFILESIZE
@@ -25,17 +25,17 @@ if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
-# set a fancy prompt (non-color, unless we know we "want" color)
-COLORS_AVAILABLE=$(tput colors 2> /dev/null);
-if [ $? = 0 ] && [ $COLORS_AVAILABLE -gt 2 ]; then
-  color_prompt=yes;
-fi
+## set a fancy prompt (non-color, unless we know we "want" color)
+#COLORS_AVAILABLE=$(tput colors 2> /dev/null);
+#if [ $? = 0 ] && [ $COLORS_AVAILABLE -gt 2 ]; then
+#  color_prompt=yes;
+#fi
 
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
-#force_color_prompt=yes
+force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
@@ -105,5 +105,5 @@ if [ -d "$HOME/.local/bin" ] ; then
     export PATH
 fi
 
-
-#alias roslog=cd $(roslaunch-logs)
+# Trying vi mode.
+set -o vi

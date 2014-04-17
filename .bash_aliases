@@ -9,9 +9,13 @@ alias sl='ls'
 alias SL='ls'
 alias LS='ls'
 
-if [ -f ~/bin/dir.sh ]; then
-	. ~/bin/dir.sh
+if [ -f ~/.bash/bin/dir.sh ]; then
+	. ~/.bash/bin/dir.sh
 fi
 
 alias g='vim --remote-silent'
 alias chrome="google-chrome --enable-plugins &";
+alias gitc='git commit'
+alias gits='git status'
+alias gitr='git remote -v'
+alias gita='git add'
