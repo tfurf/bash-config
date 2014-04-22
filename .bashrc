@@ -107,3 +107,9 @@ fi
 
 # Trying vi mode.
 set -o vi
+
+# ROS-related stuff.
+export ROS_PREFERRED_DISTRO="hydro"
+
+# And for morph.
+export ROS_WORKSPACES_ROOT="/data/morph/workspaces"

@@ -9,12 +9,10 @@ alias sl='ls'
 alias SL='ls'
 alias LS='ls'
 
-if [ -f ~/.bash/bin/dir.sh ]; then
-	. ~/.bash/bin/dir.sh
-fi
-
 alias g='vim --remote-silent'
 alias chrome="google-chrome --enable-plugins &";
+
+#Git
 alias gitb='git branch -v'
 alias gitco='git commit'
 alias gitch='git checkout'
@@ -22,3 +20,6 @@ alias gits='git status'
 alias gitr='git remote -v'
 alias gita='git add'
 alias gitl='git log'
+
+#Scripts directory:
+source "$HOME/.bash/bin/bash_sources.sh"
