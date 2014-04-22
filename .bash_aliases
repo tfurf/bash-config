@@ -16,7 +16,9 @@ fi
 alias g='vim --remote-silent'
 alias chrome="google-chrome --enable-plugins &";
 alias gitb='git branch -v'
-alias gitc='git commit'
+alias gitco='git commit'
+alias gitch='git checkout'
 alias gits='git status'
 alias gitr='git remote -v'
 alias gita='git add'
+alias gitl='git log'
