@@ -93,16 +93,19 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH";
-    export PATH
-fi
+# set PATH so it includes user's private bin(s) if it/they exist
+bins="$HOME/bin \
+      $HOME/.bash/bin \
+      $HOME/.local/bin"
+for bin in ${bins}; do
+  if [ -d "${bin}" ] ; then
+      PATH="${bin}:$PATH";
+      export PATH
+  fi
+done
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH";
-    export PATH
+if [ -f "$HOME/.bash/bin/bash_sources.sh" ] ; then
+  source "$HOME/.bash/bin/bash_sources.sh"
 fi
 
 # Trying vi mode.

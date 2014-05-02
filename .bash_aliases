@@ -21,5 +21,3 @@ alias gitr='git remote -v'
 alias gita='git add'
 alias gitl='git log'
 
-#Scripts directory:
-source "$HOME/.bash/bin/bash_sources.sh"
