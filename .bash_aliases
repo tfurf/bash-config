@@ -9,7 +9,7 @@ alias sl='ls'
 alias SL='ls'
 alias LS='ls'
 
-alias g='vim --remote-silent'
+alias vis='vim --servername VIM --remote-silent'
 alias chrome="google-chrome --enable-plugins &";
 
 #Git
