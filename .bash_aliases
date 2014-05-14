@@ -21,3 +21,5 @@ alias gitr='git remote -v'
 alias gita='git add'
 alias gitl='git log'
 
+#latexmk
+alias ltmk='latexmk -pvc'
