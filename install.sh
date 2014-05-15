@@ -1,9 +1,7 @@
 #!/bin/bash
 
 cwd=$(dirname $0); 
-t=".bash_aliases \
-   .bash_logout \
-   .bashrc"
+t=".bashrc"
 
 while getopts f? k; do
   case "${k}" in
