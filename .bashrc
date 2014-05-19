@@ -116,8 +116,10 @@ fi
 # Trying vi mode.
 set -o vi
 
+export EDITOR="vim"
+
 # ROS-related stuff.
-export ROS_PREFERRED_DISTRO="hydro"
+export ROS_PREFERRED_DISTRO="indigo"
 
 # And for morph.
 export ROS_WORKSPACES_ROOT="/data/morph/workspaces"

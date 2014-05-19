@@ -1,6 +1,7 @@
 function rossource {
   x=`pwd`;
   D="hydro \
+     indigo \
      groovy \
      fuerte"
   # If we know where the workspaces are.
