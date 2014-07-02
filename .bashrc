@@ -98,6 +98,10 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+if [ -f ~/.bash/.bash_completion ] ; then
+    source ~/.bash/.bash_completion
+fi
+
 # set PATH so it includes user's private bin(s) if it/they exist
 bins="$HOME/bin \
       $HOME/.bash/bin \

@@ -38,3 +38,9 @@ if exists wmname ;
 then
   alias matlab='wmname "LG3D"; matlab'
 fi
+
+#ROS
+alias rss='rossource'
+alias rte='rostopic echo -p'
+alias rtp='rostopic pub'
+alias rnl='rosnode list'
