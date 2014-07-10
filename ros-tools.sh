@@ -27,3 +27,9 @@ function rossource {
         }
   echo "Sourced ${s}..."
 }
+
+function set-ros-master {
+  rossource
+  echo "Setting ROS_MASTER to $1."
+  export ROS_MASTER_URI=http://$1:11311
+}
