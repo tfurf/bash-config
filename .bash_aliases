@@ -40,8 +40,12 @@ then
 fi
 
 #ROS
+function cdroslog {
+  cd `roslaunch-logs`   
+}
 alias rss='rossource'
 alias rte='rostopic echo -p'
 alias rbe='rostopic echo -p -b'
 alias rtp='rostopic pub'
 alias rnl='rosnode list'
+alias rld='cdroslog'

@@ -16,8 +16,7 @@ function rossource {
   # If we at least know the distro you're trying to source for...
   [[ -n $ROS_PREFERRED_DISTRO ]] && [[ -z "${s}" ]] && s="/opt/ros/"$(tr '[:upper:]' '[:lower:]' <<< $ROS_PREFERRED_DISTRO)"/setup.bash"
   # Last ditch, try and find something, in order of priority as listed in D.
-  [[ -z "${s}" ]] && for d in ${D} ; do
-    s="/opt/ros/"${d}"/setup.bash" 
+  [[ -z "${s}" ]] || [[ ! -f "${s}" ]] && for d in ${D} ; do s="/opt/ros/"${d}"/setup.bash" 
     [[ -a ${s} ]] && break;
   done
   # Then source whatever the result is.
