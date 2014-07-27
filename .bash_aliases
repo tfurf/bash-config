@@ -28,7 +28,7 @@ alias gita='git add'
 alias gitl='git log'
 
 #latexmk
-alias ltmk='latexmk -pvc'
+alias ltmk='latexmk -pvC'
 if exists tvnamer && [[ -f "$HOME/.config/.tvnamer.json" ]];
 then
   alias tvnamer="tvnamer --config=$HOME/.config/.tvnamer.json"
