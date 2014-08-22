@@ -34,7 +34,7 @@ exists git && {
     then
       /usr/bin/git status -sb
     else
-      /usr/bin/git $@
+      /usr/bin/git "$@"
     fi
   }
 }
