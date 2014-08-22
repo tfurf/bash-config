@@ -6,6 +6,11 @@ function exists {
   return 0
 }
 
+function isgitted {
+  [[ -d "$1"/.git ]]
+  return $?
+}
+
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
@@ -36,6 +41,32 @@ exists git && {
     else
       /usr/bin/git "$@"
     fi
+  }
+}
+
+[[ -f "$HOME/.bash/bin/todo-txt-cli/todo.sh" ]] && {
+  export TODOTXT_DEFAULT_ACTION=ls
+  TODOTXT_REPO="$HOME/todo"
+  TODOTXT_CONFIG="$TODOTXT_REPO/todo.cfg"
+  [[ -f $TODOTXT_CONFIG ]] && \
+    alias t='$HOME/.bash/bin/todo-txt-cli/todo.sh -d $HOME/todo/todo.cfg' || \
+    alias t='$HOME/.bash/bin/todo-txt-cli/todo.sh'
+
+  isgitted "$TODOTXT_REPO" && {
+    function todo-commit () {
+      (
+        cd "$TODOTXT_REPO"
+        if [[ $# == 0 ]];
+        then
+          git commit -a -m "Automated commit from $(hostname)."
+          git push home master
+        else
+          git commit -a -m "$@"
+          git push home master
+        fi
+      )
+    }
+    alias tdc='todo-commit'
   }
 }
 
