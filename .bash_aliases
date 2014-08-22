@@ -1,5 +1,4 @@
 #!/bin/bash
-# called by .bashrc
 
 function exists {
   #Check if function exists.
@@ -16,37 +15,37 @@ alias SL='ls'
 alias LS='ls'
 
 alias vis='vim --servername VIM --remote-silent'
-alias chrome="google-chrome --enable-plugins &";
 
-#Git
-alias gitb='/usr/bin/git branch -v'
-alias gitco='/usr/bin/git commit'
-alias gitch='/usr/bin/git checkout'
-alias gits='/usr/bin/git status'
-alias gitr='/usr/bin/git remote -v'
-alias gita='/usr/bin/git add'
-alias gitl='/usr/bin/git log'
-alias 
+exists google-chrome && alias chrome="google-chrome --enable-plugins &";
+
+exists git && { 
+  #Git
+  alias gitb='/usr/bin/git branch -v'
+  alias gitco='/usr/bin/git commit'
+  alias gitch='/usr/bin/git checkout'
+  alias gits='/usr/bin/git status'
+  alias gitr='/usr/bin/git remote -v'
+  alias gita='/usr/bin/git add'
+  alias gitl='/usr/bin/git log'
+  alias git='gitty'
+
+  function gitty () {
+    if [[ $# == 0 ]];
+    then
+      /usr/bin/git status -sb
+    else
+      /usr/bin/git $@
+    fi
+  }
+}
 
 #latexmk
-alias ltmk='latexmk -pvc'
+exists latexmk && alias ltmk='latexmk -pvc'
+
+#tvnamer
 if exists tvnamer && [[ -f "$HOME/.config/.tvnamer.json" ]];
 then
   alias tvnamer="tvnamer --config=$HOME/.config/.tvnamer.json"
 fi
 
-if exists wmname ;
-then
-  alias matlab='wmname "LG3D"; matlab'
-fi
-
-#ROS
-function cdroslog {
-  cd `roslaunch-logs`   
-}
-alias rss='rossource'
-alias rte='rostopic echo -p'
-alias rbe='rostopic echo -p -b'
-alias rtp='rostopic pub'
-alias rnl='rosnode list'
-alias rld='cdroslog'
+exists wmname && alias matlab='wmname "LG3D"; matlab'
