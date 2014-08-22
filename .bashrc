@@ -104,7 +104,6 @@ fi
 
 # set PATH so it includes user's private bin(s) if it/they exist
 bins="$HOME/bin \
-      $HOME/.bash/bin \
       $HOME/.local/bin"
 for bin in ${bins}; do
   if [ -d "${bin}" ] ; then
@@ -113,8 +112,8 @@ for bin in ${bins}; do
   fi
 done
 
-if [ -f "$HOME/.bash/bin/bash_sources.sh" ] ; then
-  source "$HOME/.bash/bin/bash_sources.sh"
+if [ -f "$HOME/.bash/src/bash_sources.sh" ] ; then
+  source "$HOME/.bash/src/bash_sources.sh"
 fi
 
 # Trying vi mode.

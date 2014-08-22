@@ -19,16 +19,17 @@ alias vis='vim --servername VIM --remote-silent'
 alias chrome="google-chrome --enable-plugins &";
 
 #Git
-alias gitb='git branch -v'
-alias gitco='git commit'
-alias gitch='git checkout'
-alias gits='git status'
-alias gitr='git remote -v'
-alias gita='git add'
-alias gitl='git log'
+alias gitb='/usr/bin/git branch -v'
+alias gitco='/usr/bin/git commit'
+alias gitch='/usr/bin/git checkout'
+alias gits='/usr/bin/git status'
+alias gitr='/usr/bin/git remote -v'
+alias gita='/usr/bin/git add'
+alias gitl='/usr/bin/git log'
+alias 
 
 #latexmk
-alias ltmk='latexmk -pvC'
+alias ltmk='latexmk -pvc'
 if exists tvnamer && [[ -f "$HOME/.config/.tvnamer.json" ]];
 then
   alias tvnamer="tvnamer --config=$HOME/.config/.tvnamer.json"
