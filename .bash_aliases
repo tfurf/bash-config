@@ -38,3 +38,5 @@ if exists wmname ;
 then
   alias matlab='wmname "LG3D"; matlab'
 fi
+
+alias standby='dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Suspend'
