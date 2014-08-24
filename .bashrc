@@ -8,7 +8,7 @@
 # History options.
 HISTCONTROL=ignoredups:ignorespace:erasedups
 shopt -s histappend
-HISTIGNORE="&:ls:ll:cd *:[ ]*:git *:$HISTIGNORE"
+HISTIGNORE="&:ls:ll:cd *:[ ]*:$HISTIGNORE"
 HISTSIZE=10000
 HISTFILESIZE=200000
 export HISTCONTROL HISTIGNORE HISTSIZE HISTFILESIZE
@@ -98,9 +98,12 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+if [ -f ~/.bash/.bash_completion ] ; then
+    source ~/.bash/.bash_completion
+fi
+
 # set PATH so it includes user's private bin(s) if it/they exist
 bins="$HOME/bin \
-      $HOME/.bash/bin \
       $HOME/.local/bin"
 for bin in ${bins}; do
   if [ -d "${bin}" ] ; then
@@ -109,8 +112,8 @@ for bin in ${bins}; do
   fi
 done
 
-if [ -f "$HOME/.bash/bin/bash_sources.sh" ] ; then
-  source "$HOME/.bash/bin/bash_sources.sh"
+if [ -f "$HOME/.bash/src/bash_sources.sh" ] ; then
+  source "$HOME/.bash/src/bash_sources.sh"
 fi
 
 # Trying vi mode.
