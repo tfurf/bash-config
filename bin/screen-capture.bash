@@ -6,7 +6,7 @@ function exists {
   return 0
 }
 
-exists screen-capture || source $HOME/.bash/src/wm-tools.sh
+exists screen-capture || source $HOME/.bash/src/wm-tools.bash
 
 screen-capture
 

@@ -6,6 +6,6 @@ function exists {
   return 0
 }
 
-exists screen-locker || source $HOME/.bash/src/wm-tools.sh
+exists screen-locker || source $HOME/.bash/src/wm-tools.bash
 
 screen-locker
