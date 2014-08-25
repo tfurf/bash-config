@@ -112,8 +112,8 @@ for bin in ${bins}; do
   fi
 done
 
-if [ -f "$HOME/.bash/src/bash_sources.sh" ] ; then
-  source "$HOME/.bash/src/bash_sources.sh"
+if [ -f "$HOME/.bash/src/bash-sources.bash" ] ; then
+  source "$HOME/.bash/src/bash-sources.bash"
 fi
 
 # Trying vi mode.
