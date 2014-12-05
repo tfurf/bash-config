@@ -61,7 +61,7 @@ function pushStack
   if [[ ${#DS[*]} -gt $DIRSTACK_MAX ]]; then
     unset DS[$((${#DS[*]}-1))]
   fi
-} 
+}
 
 function cd_
 {
@@ -117,7 +117,7 @@ function cd_
   fi
 
   return $ret
-} 
+}
 
 function pd
 {
@@ -148,7 +148,7 @@ function pd
       return 1
     fi
   fi
-} 
+}
 
 function ss
 {
@@ -171,7 +171,7 @@ function ss
     echo "$((c+1))) $x"
     ((c=c+1))
   done
-} 
+}
 
 function csd
 {
@@ -205,6 +205,6 @@ function csd
     cd_ "$dir"
     return $?
   fi
-} 
+}
 
 alias cd=cd_
