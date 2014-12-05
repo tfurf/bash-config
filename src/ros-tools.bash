@@ -26,7 +26,7 @@ alias rnl='rosnode list'
 alias rld='cdroslog'
 
 function cdroslog {
-  cd `roslaunch-logs`   
+  cd `roslaunch-logs`
 }
 
 function rossource {
