@@ -26,7 +26,7 @@ alias rnl='rosnode list'
 alias rld='cdroslog'
 
 function cdroslog {
-  cd `roslaunch-logs`   
+  cd `roslaunch-logs`
 }
 
 function rossource {
@@ -38,16 +38,16 @@ function rossource {
   # If we know where the workspaces are.
   echo "ROS_WORKSPACES_ROOT=$ROS_WORKSPACES_ROOT"
   if [[ -n $ROS_WORKSPACES_ROOT ]] && [[ $x == $ROS_WORKSPACES_ROOT* ]] ; then
-    while [ "$x" != `dirname $ROS_WORKSPACES_ROOT` ] ; do 
+    while [ "$x" != `dirname $ROS_WORKSPACES_ROOT` ] ; do
       x=`dirname "$x"`;
       s=`find "$x" -maxdepth 2 -name setup.bash | head -n 1`;
       [[ -z "$s" ]] || break;
     done
-  fi 
+  fi
   # If we at least know the distro you're trying to source for...
   [[ -n $ROS_PREFERRED_DISTRO ]] && [[ -z "${s}" ]] && s="/opt/ros/"$(tr '[:upper:]' '[:lower:]' <<< $ROS_PREFERRED_DISTRO)"/setup.bash"
   # Last ditch, try and find something, in order of priority as listed in ROS_DISTROS.
-  [[ -z "${s}" ]] || [[ ! -f "${s}" ]] && for d in ${ROS_DISTROS} ; do s="/opt/ros/"${d}"/setup.bash" 
+  [[ -z "${s}" ]] || [[ ! -f "${s}" ]] && for d in ${ROS_DISTROS} ; do s="/opt/ros/"${d}"/setup.bash"
     [[ -a ${s} ]] && break;
   done
   # Then source whatever the result is.

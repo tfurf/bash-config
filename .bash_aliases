@@ -27,7 +27,7 @@ alias vis='vim --servername VIM --remote-silent'
 
 exists google-chrome && alias chrome="google-chrome --enable-plugins &";
 
-exists git && { 
+exists git && {
   #Git
   alias gitb='/usr/bin/git branch -v'
   alias gitco='/usr/bin/git commit'
