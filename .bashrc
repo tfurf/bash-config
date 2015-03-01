@@ -125,4 +125,4 @@ export EDITOR="vim"
 export ROS_PREFERRED_DISTRO="indigo"
 
 # And for morph.
-export ROS_WORKSPACES_ROOT="/data/morph/workspaces"
+export ROS_WORKSPACES_ROOT="/data/workspaces"

@@ -4,3 +4,4 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source $DIR/dir.bash
 source $DIR/ros-tools.bash
 source $DIR/wm-tools.bash
+source $DIR/kodi-tools.bash
