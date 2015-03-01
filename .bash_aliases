@@ -29,7 +29,7 @@ exists google-chrome && alias chrome="google-chrome --enable-plugins &";
 
 exists git && {
   #Git
-  alias gitb='/usr/bin/git branch -v'
+  alias gitb='/usr/bin/git branch -va'
   alias gitco='/usr/bin/git commit'
   alias gitch='/usr/bin/git checkout'
   alias gits='/usr/bin/git status'
