@@ -30,7 +30,6 @@ function cdroslog {
 }
 
 function rossource {
-  set -x
   x=`pwd`;
   ROS_DISTROS="hydro \
      indigo \
@@ -58,7 +57,6 @@ function rossource {
           return 1;
         }
   echo "Sourced ${s}..."
-  set +x
 }
 
 function set-ros-master {
