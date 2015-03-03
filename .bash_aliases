@@ -11,6 +11,10 @@ function isgitted {
   return $?
 }
 
+function suspend {
+  dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Suspend
+}
+
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
