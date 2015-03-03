@@ -79,4 +79,4 @@ then
   alias tvnamer="tvnamer --config=$HOME/.config/.tvnamer.json"
 fi
 
-exists wmname && alias matlab='wmname "LG3D"; matlab'
+exists matlab && exists wmname && alias matlab='wmname "LG3D"; matlab'
