@@ -1,4 +1,4 @@
-#!/bin/bash   
+#!/bin/bash
 
 function screen-capture () {
   timestamp="$(date +%Y%m%d_%H%M%S)"

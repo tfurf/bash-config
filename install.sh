@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cwd=$(dirname $0); 
+cwd=$(dirname $0);
 t=".bashrc"
 
 while getopts f? k; do
@@ -15,7 +15,7 @@ while getopts f? k; do
 done
 
 for f in ${t}; do
-  [[ -f ${cwd}/${f} ]] && { 
+  [[ -f ${cwd}/${f} ]] && {
     [[ ${force} == "yes" ]] && mv -v ~/${f} ~/${f}.bak;
     ln -vT ${cwd}/${f} ~/${f} ;
   }

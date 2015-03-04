@@ -11,6 +11,10 @@ function isgitted {
   return $?
 }
 
+function suspend {
+  dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Suspend
+}
+
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
@@ -23,9 +27,9 @@ alias vis='vim --servername VIM --remote-silent'
 
 exists google-chrome && alias chrome="google-chrome --enable-plugins &";
 
-exists git && { 
+exists git && {
   #Git
-  alias gitb='/usr/bin/git branch -v'
+  alias gitb='/usr/bin/git branch -va'
   alias gitco='/usr/bin/git commit'
   alias gitch='/usr/bin/git checkout'
   alias gits='/usr/bin/git status'
@@ -79,4 +83,4 @@ then
   alias tvnamer="tvnamer --config=$HOME/.config/.tvnamer.json"
 fi
 
-exists wmname && alias matlab='wmname "LG3D"; matlab'
+exists matlab && exists wmname && alias matlab='wmname "LG3D"; matlab'
