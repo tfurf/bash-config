@@ -29,14 +29,15 @@ exists google-chrome && alias chrome="google-chrome --enable-plugins &";
 
 exists git && {
   #Git
-  alias gitb='/usr/bin/git branch -va'
-  alias gitco='/usr/bin/git commit'
-  alias gitch='/usr/bin/git checkout'
-  alias gits='/usr/bin/git status'
-  alias gitr='/usr/bin/git remote -v'
-  alias gita='/usr/bin/git add'
-  alias gitl='/usr/bin/git log'
-  alias git='gitty'
+  alias gb='/usr/bin/git branch -va'
+  alias gco='/usr/bin/git commit'
+  alias gd='/usr/bin/git diff'
+  alias gs='/usr/bin/git status'
+  alias gr='/usr/bin/git remote -v'
+  alias ga='/usr/bin/git add'
+  alias gl='/usr/bin/git log --format=format:"%ai %aE %s"'
+  alias gt='/usr/bin/git tag'
+  alias g='gitty'
 
   function gitty () {
     if [[ $# == 0 ]];
@@ -83,4 +84,4 @@ then
   alias tvnamer="tvnamer --config=$HOME/.config/.tvnamer.json"
 fi
 
-exists wmname && alias matlab='wmname "LG3D"; matlab'
+exists matlab && exists wmname && alias matlab='wmname "LG3D"; matlab'
