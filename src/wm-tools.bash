@@ -30,8 +30,23 @@ function screen-adder () {
     echo "${i}) ${SCREEN}"
     i=$((i + 1))
   done;
-  echo "Choose one."
+  echo "Choose one to add."
   read choice
   SECONDARY=$( list-screens | sed -n $(echo "${choice},${choice}p") )
   xrandr --output ${SECONDARY} --auto --right-of ${XRANDR_PRIMARY}
+}
+
+function screen-disconnect () {
+  XRANDR_PRIMARY=$(get-primary-screen)
+  echo "Screen options are:"
+  i=1
+  list-screens |
+  for SCREEN in $(list-screens); do
+    echo "${i}) ${SCREEN}"
+    i=$((i + 1))
+  done;
+  echo "Choose one to remove."
+  read choice
+  SECONDARY=$( list-screens | sed -n $(echo "${choice},${choice}p") )
+  xrandr --output ${SECONDARY} --off
 }
