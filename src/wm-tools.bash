@@ -13,8 +13,34 @@ function screen-locker () {
   gnome-screensaver-command -l
 }
 
+function get-screen-names () {
+  xrandr --verbose | awk '
+  /[:.]/ && hex {
+    sub(/.*000000fc00/, "", hex)
+    hex = substr(hex, 0, 26) "0a"
+    sub(/0a.*/, "", hex)
+    print "name=$( xxd -r -p <<< \42" hex "\42) ; display=\42" name "\42"
+    hex=""
+    name=""
+  }
+  hex {
+    gsub(/[ \t]+/, "")
+    hex = hex $0
+  }
+  /^[^ \t]+ (dis)*connected .*/ && length(hex) == 0 {
+    name=$0
+    sub(/[ \t]+.*$/, "", name)
+  }
+  /EDID.*:/ {
+      hex=" "
+  }' | while read l ; do
+    eval `echo "$l"`
+    echo "{ display: \"$display\" , name: \"$name\" }"
+  done
+}
+
 function list-screens () {
-  xrandr | grep "connected" | grep -v "disconnected" | cut -d' ' -f1
+  get-screen-names
 }
 
 function get-primary-screen () {
@@ -26,10 +52,10 @@ function screen-adder () {
   echo "Screen options are:"
   i=1
   list-screens |
-  for SCREEN in $(list-screens); do
+  while read SCREEN; do
     echo "${i}) ${SCREEN}"
     i=$((i + 1))
-  done;
+  done < <(list-screens)
   echo "Choose one to add."
   read choice
   SECONDARY=$( list-screens | sed -n $(echo "${choice},${choice}p") )
