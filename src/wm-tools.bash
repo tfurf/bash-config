@@ -47,32 +47,27 @@ function get-primary-screen () {
   xrandr | sed -En 's/^([^ ]+) .*connected primary.*$/\1/p'
 }
 
-function screen-adder () {
-  XRANDR_PRIMARY=$(get-primary-screen)
+function screen-operation () {
+  XRANDR_OPERATION="$@"
   echo "Screen options are:"
   i=1
   list-screens |
   while read SCREEN; do
     echo "${i}) ${SCREEN}"
     i=$((i + 1))
-  done < <(list-screens)
+  done
   echo "Choose one to add."
   read choice
-  SECONDARY=$( list-screens | sed -n $(echo "${choice},${choice}p") )
-  xrandr --output ${SECONDARY} --auto --right-of ${XRANDR_PRIMARY}
+  SECONDARY=$( list-screens | sed -n $(echo "${choice},${choice}p") | sed -r 's/.*display: "([^"]+)".*/\1/' )
+  OP=`xrandr ${XRANDR_OPERATION}`
+  eval "echo ${OP}"
+}
+
+function screen-adder () {
+  XRANDR_PRIMARY=$(get-primary-screen)
+  screen-operation '--output ${SECONDARY} --auto --right-of '"${XRANDR_PRIMARY}"
 }
 
 function screen-disconnect () {
-  XRANDR_PRIMARY=$(get-primary-screen)
-  echo "Screen options are:"
-  i=1
-  list-screens |
-  for SCREEN in $(list-screens); do
-    echo "${i}) ${SCREEN}"
-    i=$((i + 1))
-  done;
-  echo "Choose one to remove."
-  read choice
-  SECONDARY=$( list-screens | sed -n $(echo "${choice},${choice}p") )
-  xrandr --output ${SECONDARY} --off
+  screen-operation '--output ${SECONDARY} --off'
 }
