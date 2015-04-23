@@ -35,7 +35,7 @@ exists git && {
   alias gs='/usr/bin/git status'
   alias gr='/usr/bin/git remote -v'
   alias ga='/usr/bin/git add'
-  alias gl='/usr/bin/git log --format=format:"%ai %aE %s"'
+  alias gl='/usr/bin/git log --format=format:"%ai %h %aE %s"'
   alias gt='/usr/bin/git tag'
   alias g='gitty'
 
