@@ -47,7 +47,7 @@ function rossource {
   # If we at least know the distro you're trying to source for...
   [[ -n $ROS_PREFERRED_DISTRO ]] && [[ -z "${s}" ]] && s="/opt/ros/"$(tr '[:upper:]' '[:lower:]' <<< $ROS_PREFERRED_DISTRO)"/setup.bash"
   # Last ditch, try and find something, in order of priority as listed in ROS_DISTROS.
-  [[ -z "${s}" ]] || [[ ! -f "${s}" ]] && for d in ${ROS_DISTROS} ; 
+  [[ -z "${s}" ]] || [[ ! -f "${s}" ]] && for d in ${ROS_DISTROS} ;
     do s="/opt/ros/"${d}"/setup.bash"
     [[ -a ${s} ]] && break;
   done
@@ -58,6 +58,16 @@ function rossource {
         }
   echo "Sourced ${s}..."
 }
+
+function _catkin {
+  CWD=$PWD
+  rossource
+  cd $ROS_WORKSPACES_ROOT/$( sed -re "s%$ROS_WORKSPACES_ROOT/%%" -e 's/([^\/]+).*/\1/' <<< $PWD )
+  catkin_make
+  cd $CWD
+}
+
+alias catkin='_catkin'
 
 function set-ros-master {
   rossource
