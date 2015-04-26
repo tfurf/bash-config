@@ -25,13 +25,6 @@ if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
-## set a fancy prompt (non-color, unless we know we "want" color)
-#COLORS_AVAILABLE=$(tput colors 2> /dev/null);
-#if [ $? = 0 ] && [ $COLORS_AVAILABLE -gt 2 ]; then
-#  color_prompt=yes;
-#fi
-
-
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
@@ -48,15 +41,20 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+function git_prompt()
+{
+  [[ -n $(__git_ps1) ]] && echo -e ' \ue0a0\033[01;33m '$(__git_ps1 %s)'\e[0m'
+}
+
 if [ "$color_prompt" = yes ]; then
   if [ -n "$SSH_CLIENT" ];
   then
-    PS1='\[\033[01;35m\][\t]\[\033[01;31m\][SSH]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '
+    PS1="\[\033[01;35m\][\t]\[\033[01;31m\][SSH]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$(git_prompt)$ "
   else
-    PS1='\[\033[01;35m\][\t]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '
+    PS1="\[\033[01;35m\][\t]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$(git_prompt)$ "
   fi
 else
-    PS1='[\t]${debian_chroot:+($debian_chroot)}\u@\h:\W\$ '
+  PS1="[\t]${debian_chroot:+($debian_chroot)}\u@\h:\W\$(git_prompt)$ "
 fi
 unset color_prompt force_color_prompt
 export PS1
