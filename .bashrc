@@ -43,7 +43,7 @@ fi
 
 function git_prompt()
 {
-  [[ -n $(__git_ps1) ]] && echo -e "\033[01;33m($(__git_ps1 %s)\033[00m)$ " || echo "$ "
+  [[ -n $(__git_ps1) ]] && echo -e "\033[01;33m($(__git_ps1 %s))\033[00m$ " || echo "$ "
 }
 
 if [ "$color_prompt" = yes ]; then
