@@ -63,7 +63,7 @@ function _catkin {
   CWD=$PWD
   rossource
   cd $ROS_WORKSPACES_ROOT/$( sed -re "s%$ROS_WORKSPACES_ROOT/%%" -e 's/([^\/]+).*/\1/' <<< $PWD )
-  catkin_make
+  catkin_make $@
   cd $CWD
 }
 
