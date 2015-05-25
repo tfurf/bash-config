@@ -56,11 +56,11 @@ function screen-operation () {
     echo "${i}) ${SCREEN}"
     i=$((i + 1))
   done
-  echo "Choose one to add."
   read choice
+  set -x
   SECONDARY=$( list-screens | sed -n $(echo "${choice},${choice}p") | sed -r 's/.*display: "([^"]+)".*/\1/' )
-  OP=`xrandr ${XRANDR_OPERATION}`
-  eval "echo ${OP}"
+  OP="xrandr ${XRANDR_OPERATION}"
+  eval "${OP}"
 }
 
 function screen-adder () {
