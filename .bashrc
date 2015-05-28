@@ -49,7 +49,7 @@ function exists {
 
 function git_prompt()
 {
-  exists __git_ps1 && [[ -n $(__git_ps1) ]] && echo -e "\033[01;33m($(__git_ps1 %s))\033[00m$ " || echo "$ "
+  exists __git_ps1 && { [[ -n $(__git_ps1) ]] && echo -e "\033[01;33m($(__git_ps1 %s))\033[00m$ " ;} || echo "$ "
 }
 
 if [ "$color_prompt" = yes ]; then
