@@ -49,15 +49,15 @@ function exists {
 
 function git_prompt()
 {
-  exists __git_ps1 && { [[ -n $(__git_ps1) ]] && echo -e "\033[01;33m($(__git_ps1 %s))\033[00m$ " ;} || echo "$ "
+  exists __git_ps1 && [[ -n $(__git_ps1) ]] && echo -e "($(__git_ps1 %s))"
 }
 
 if [ "$color_prompt" = yes ]; then
   if [ -n "$SSH_CLIENT" ];
   then
-    PS1="\[\033[01;35m\][\t]\[\033[01;31m\][SSH]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$(git_prompt)"
+    PS1="\[\033[01;35m\][\t]\[\033[01;31m\][SSH]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\[\033[01;33m\]\$(git_prompt)\[\033[00m\]$ "
   else
-    PS1="\[\033[01;35m\][\t]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$(git_prompt)"
+    PS1="\[\033[01;35m\][\t]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\[\033[01;33m\]\$(git_prompt)\[\033[00m\]$ "
   fi
 else
   PS1="[\t]${debian_chroot:+($debian_chroot)}\u@\h:\W\$(git_prompt)"
