@@ -25,7 +25,20 @@ alias LS='ls'
 
 alias vis='vim --servername VIM --remote-silent'
 
-exists google-chrome && alias chrome="google-chrome --enable-plugins &";
+exists xclip && {
+  function clipboard {
+    if [ ! -t 0 ] ;
+    then
+      xclip -i
+    else
+      xclip -o
+    fi
+  }
+  alias cb="clipboard"
+}
+
+exists google-chrome  && alias chrome="google-chrome --enable-plugins &";
+exists bc             && alias bc="bc --mathlib";
 
 exists git && {
   #Git
