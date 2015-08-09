@@ -130,4 +130,10 @@ export ROS_PREFERRED_DISTRO="indigo"
 
 # And for morph.
 export ROS_WORKSPACES_ROOT="/data/morph/workspaces"
-source /etc/bash_completion.d/password-store
+
+# For pass.
+
+if [ -f /etc/bash_completion.d/password-store ] ;
+then
+  source /etc/bash_completion.d/password-store
+fi
