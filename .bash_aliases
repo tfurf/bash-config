@@ -94,7 +94,8 @@ exists latexmk && alias ltmk='latexmk -pvc'
 #tvnamer
 if exists tvnamer && [[ -f "$HOME/.config/.tvnamer.json" ]];
 then
-  alias tvnamer="tvnamer --config=$HOME/.config/.tvnamer.json"
+  alias tvn="tvnamer --config=$HOME/.config/.tvnamer.json"
+  alias tvmv="tvnamer --movedestination='/mnt/video/TV/%(seriesname)s/S%(seasonnumber)02d/' -m Rick* -b"
 fi
 
 exists matlab && exists wmname && alias matlab='wmname "LG3D"; matlab'
