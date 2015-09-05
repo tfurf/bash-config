@@ -34,7 +34,11 @@ exists xclip && {
       xclip -o
     fi
   }
+  function cdc {
+    cd $(xclip -o)
+  }
   alias cb="clipboard"
+  alias pwdc="pwd | tee >(xclip -i)"
 }
 
 exists google-chrome  && alias chrome="google-chrome --enable-plugins &";
