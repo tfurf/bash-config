@@ -16,6 +16,7 @@ function suspend {
 }
 
 alias ll='ls -alF'
+alias ll='ls -alR'
 alias la='ls -A'
 alias l='ls -CF'
 
