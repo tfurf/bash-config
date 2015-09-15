@@ -16,6 +16,7 @@ function suspend {
 }
 
 alias ll='ls -alF'
+alias lr='ls -alR'
 alias la='ls -A'
 alias l='ls -CF'
 
@@ -34,7 +35,11 @@ exists xclip && {
       xclip -o
     fi
   }
+  function cdc {
+    cd $(xclip -o)
+  }
   alias cb="clipboard"
+  alias pwdc="pwd | tee >(xclip -i)"
 }
 
 exists google-chrome  && alias chrome="google-chrome --enable-plugins &";
