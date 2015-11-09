@@ -44,7 +44,7 @@ function list-screens () {
 }
 
 function get-primary-screen () {
-  xrandr | sed -En 's/^([^ ]+) .*connected primary.*$/\1/p'
+  xrandr | sed -En 's/^([^ ]+) connected primary.*$/\1/p'
 }
 
 function screen-operation () {
