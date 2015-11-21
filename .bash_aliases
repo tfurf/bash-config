@@ -18,11 +18,11 @@ function suspend {
 alias ll='ls -alF'
 alias lr='ls -alR'
 alias la='ls -A'
-alias l='ls -CF'
+alias l='ls -alF'
 
-alias sl='ls'
-alias SL='ls'
-alias LS='ls'
+alias sl='l'
+alias SL='l'
+alias LS='l'
 
 alias vis='vim --servername VIM --remote-silent'
 
@@ -100,7 +100,7 @@ exists latexmk && alias ltmk='latexmk -pvc'
 if exists tvnamer && [[ -f "$HOME/.config/.tvnamer.json" ]];
 then
   alias tvn="tvnamer --config=$HOME/.config/.tvnamer.json"
-  alias tvmv="tvnamer --config=$HOME/.config/.tvnamer.json --movedestination='/mnt/video/TV/%(seriesname)s/S%(seasonnumber)02d/' -m -b"
+  alias tvmv="tvnamer --config=$HOME/.config/.tvnamer.json -m -b"
 fi
 
 exists matlab && exists wmname && alias matlab='wmname "LG3D"; matlab'
