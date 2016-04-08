@@ -137,3 +137,9 @@ if [ -f /etc/bash_completion.d/password-store ] ;
 then
   source /etc/bash_completion.d/password-store
 fi
+
+if [ -d "${HOME}/gopath" ];
+then
+  export GOPATH=$HOME/gopath
+  export PATH=$GOPATH:$GOPATH/bin:$PATH
+fi
