@@ -56,6 +56,7 @@ exists git && {
   alias gl='/usr/bin/git log --format=format:"%ai %h %aE %s"'
   alias gt='/usr/bin/git tag'
   alias g='gitty'
+  alias gcd='cd $(/usr/bin/git rev-parse --show-toplevel)'
 
   function gitty () {
     if [[ $# == 0 ]];
