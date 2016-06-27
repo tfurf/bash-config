@@ -49,6 +49,7 @@ function exists {
 
 function git_prompt()
 {
+  [[ -f /usr/share/git-core/contrib/completion/git-prompt.sh ]] && source /usr/share/git-core/contrib/completion/git-prompt.sh
   exists __git_ps1 && [[ -n $(__git_ps1) ]] && echo -e "($(__git_ps1 %s))"
 }
 
