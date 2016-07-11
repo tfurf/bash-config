@@ -36,33 +36,35 @@ function rossource {
      groovy \
      fuerte"
   # If we know where the workspaces are.
-  echo "ROS_WORKSPACES_ROOT=$ROS_WORKSPACES_ROOT"
-  if [[ -n $ROS_WORKSPACES_ROOT ]] && [[ $x == $ROS_WORKSPACES_ROOT* ]] ; then
-    while [ "$x" != `dirname $ROS_WORKSPACES_ROOT` ] ; do
+  echo "WORKSPACES_ROOT=$WORKSPACES_ROOT"
+  if [[ -n $WORKSPACES_ROOT ]] && [[ $x == $WORKSPACES_ROOT* ]] ; then
+    while [ "$x" != `dirname $WORKSPACES_ROOT` ] ; do
       s=`find "$x" -maxdepth 2 -name setup.bash | head -n 1`;
       x=`dirname "$x"`;
       [[ -z "$s" ]] || break;
     done
   fi
   # If we at least know the distro you're trying to source for...
-  [[ -n $ROS_PREFERRED_DISTRO ]] && [[ -z "${s}" ]] && s="/opt/ros/"$(tr '[:upper:]' '[:lower:]' <<< $ROS_PREFERRED_DISTRO)"/setup.bash"
+  [[ -n $ROS_PREFERRED_DISTRO ]] && [[ -z "$s" ]] && s="/opt/ros/"$(tr '[:upper:]' '[:lower:]' <<< $ROS_PREFERRED_DISTRO)"/setup.bash"
   # Last ditch, try and find something, in order of priority as listed in ROS_DISTROS.
-  [[ -z "${s}" ]] || [[ ! -f "${s}" ]] && for d in ${ROS_DISTROS} ;
-    do s="/opt/ros/"${d}"/setup.bash"
-    [[ -a ${s} ]] && break;
+  [[ -z "$s" ]] || [[ ! -f "$s" ]] && for d in $ROS_DISTROS ;
+    do s="/opt/ros/"$d"/setup.bash"
+    [[ -a $s ]] && break;
   done
   # Then source whatever the result is.
-  source ${s} >/dev/null 2>&1 || {
+  source $s >/dev/null 2>&1 || {
           echo 1>&2 "I can't easily find where to source the ros environment from. Bailing.";
           return 1;
         }
-  echo "Sourced ${s}..."
+  echo "Sourced $s..."
 }
 
 function _catkin {
   CWD=$PWD
+  set -x
   rossource
-  cd $ROS_WORKSPACES_ROOT/$( sed -re "s%$ROS_WORKSPACES_ROOT/%%" -e 's/([^\/]+).*/\1/' <<< $PWD )
+  "cd" $WORKSPACES_ROOT/$( sed -re "s%$WORKSPACES_ROOT/%%" -e 's/([^\/]+).*/\1/' <<< $PWD )
+  set +x
   catkin_make $@
   cd $CWD
 }

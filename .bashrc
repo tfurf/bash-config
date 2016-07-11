@@ -49,7 +49,7 @@ function exists {
 
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/scripts/base16-default-dark.sh"
-[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+# [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 function git_prompt()
 {
@@ -69,15 +69,6 @@ else
 fi
 unset color_prompt force_color_prompt
 export PS1
-
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -112,7 +103,8 @@ fi
 bins="$HOME/bin \
       $HOME/.local/bin"
 for bin in ${bins}; do
-  if [ -d "${bin}" ] ; then
+  if [ -d "${bin}" ] ;
+  then
       PATH="${bin}:$PATH";
       export PATH
   fi
@@ -130,8 +122,8 @@ export EDITOR="vim"
 # ROS-related stuff.
 export ROS_PREFERRED_DISTRO="indigo"
 
-# And for morph.
-export ROS_WORKSPACES_ROOT="/data/morph/workspaces"
+#Either give absolute path, or dont' use quotes, so tilde gets expanded.
+export WORKSPACES_ROOT=~/workspaces
 
 # For pass.
 

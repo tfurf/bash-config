@@ -105,3 +105,15 @@ then
 fi
 
 exists matlab && exists wmname && alias matlab='wmname "LG3D"; matlab'
+
+if exists tmux ;
+then
+  alias tmux="tmux -2"
+fi
+
+if exists vim.gnome;
+then
+  alias vi="vim.gnome";
+else
+  alias vi="vim";
+fi
