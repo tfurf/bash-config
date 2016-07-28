@@ -61,12 +61,12 @@ function rossource {
 
 function _catkin {
   CWD=$PWD
-  set -x
   rossource
-  "cd" $WORKSPACES_ROOT/$( sed -re "s%$WORKSPACES_ROOT/%%" -e 's/([^\/]+).*/\1/' <<< $PWD )
-  set +x
+  #"cd" $WORKSPACES_ROOT/$( sed -re "s%$WORKSPACES_ROOT/%%" -e 's/([^\/]+).*/\1/' <<< $PWD )
+  roscd
+  "cd" ../
   catkin_make $@
-  cd $CWD
+  "cd" $CWD
 }
 
 alias catkin='_catkin'
