@@ -36,7 +36,7 @@ exists xclip && {
     fi
   }
   function cdc {
-    cd $(xclip -o)
+    cd "$(xclip -o)"
   }
   alias cb="clipboard"
   alias pwdc="pwd | tee >(xclip -i)"
