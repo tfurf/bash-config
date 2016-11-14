@@ -69,7 +69,7 @@ function _catkin {
   "cd" $CWD
 }
 
-alias catkin='_catkin'
+#alias catkin='_catkin'
 
 function set-ros-master {
   rossource
