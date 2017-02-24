@@ -55,6 +55,7 @@ exists git && {
   alias ga='/usr/bin/git add'
   alias gl='/usr/bin/git log --format=format:"%ai %h %aE %s"'
   alias gt='/usr/bin/git tag'
+  alias ggr='/usr/bin/git log --all --decorate --oneline --graph'
   alias g='gitty'
   alias gcd='cd $(/usr/bin/git rev-parse --show-toplevel)'
   alias gp='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset" --abbrev-commit --date=relative'
