@@ -57,6 +57,7 @@ exists git && {
   alias gt='/usr/bin/git tag'
   alias g='gitty'
   alias gcd='cd $(/usr/bin/git rev-parse --show-toplevel)'
+  alias gp='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset" --abbrev-commit --date=relative'
 
   function gitty () {
     if [[ $# == 0 ]];
