@@ -113,8 +113,10 @@ then
   alias tmux="tmux -2"
 fi
 
-if exists vim.gnome;
+if exists nvim;
 then
+  alias vi="nvim";
+elif exists vim.gnome; then
   alias vi="vim.gnome";
 else
   alias vi="vim";

@@ -117,7 +117,13 @@ fi
 # Trying vi mode.
 set -o vi
 
-export EDITOR="vim"
+
+if exists nvim;
+then
+  export EDITOR="nvim"
+else
+  export EDITOR="vim"
+fi
 
 # ROS-related stuff.
 export ROS_PREFERRED_DISTRO="indigo"
@@ -136,4 +142,14 @@ if [ -d "${HOME}/gopath" ];
 then
   export GOPATH=$HOME/gopath
   export PATH=$GOPATH:$GOPATH/bin:$PATH
+fi
+
+if [ -f "home/thomas.furfaro/.rvm/scripts/rvm" ];
+then
+  source /home/thomas.furfaro/.rvm/scripts/rvm
+fi
+
+if [ -f ~/.fzf.bash ];
+then
+  source ~/.fzf.bash
 fi
