@@ -138,15 +138,15 @@ then
   source /etc/bash_completion.d/password-store
 fi
 
-if [ -d "${HOME}/gopath" ];
+if [ -d ~/gopath ];
 then
   export GOPATH=$HOME/gopath
   export PATH=$GOPATH:$GOPATH/bin:$PATH
 fi
 
-if [ -f "home/thomas.furfaro/.rvm/scripts/rvm" ];
+if [ -f ~/.rvm/scripts/rvm ];
 then
-  source /home/thomas.furfaro/.rvm/scripts/rvm
+  source ~/.rvm/scripts/rvm
 fi
 
 if [ -f ~/.fzf.bash ];
