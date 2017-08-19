@@ -70,6 +70,10 @@ exists git && {
   }
 }
 
+exists wstool && {
+  alias ws="wstool"
+}
+
 [[ -f "$HOME/.bash/bin/todo-txt-cli/todo.sh" ]] && {
   export TODOTXT_DEFAULT_ACTION=ls
   TODOTXT_REPO="$HOME/todo"
