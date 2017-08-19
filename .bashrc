@@ -138,10 +138,10 @@ then
   source /etc/bash_completion.d/password-store
 fi
 
-if [ -d ~/gopath ];
+if [ -d ~/go ];
 then
-  export GOPATH=$HOME/gopath
-  export PATH=$GOPATH:$GOPATH/bin:$PATH
+  export GOPATH=$HOME/go
+  export PATH=$GOPATH:$GOPATH/bin:$PATH:/usr/local/go/bin
 fi
 
 if [ -f ~/.rvm/scripts/rvm ];
@@ -152,4 +152,5 @@ fi
 if [ -f ~/.fzf.bash ];
 then
   source ~/.fzf.bash
+  export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 fi
