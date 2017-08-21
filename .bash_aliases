@@ -72,6 +72,9 @@ exists git && {
 
 exists wstool && {
   alias ws="wstool"
+  function cdws {
+    cd $(wstool info --root)
+  }
 }
 
 [[ -f "$HOME/.bash/bin/todo-txt-cli/todo.sh" ]] && {
