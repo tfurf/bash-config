@@ -72,7 +72,7 @@ export PS1
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    test -r $HOME/.dircolors && eval "$(dircolors -b $HOME/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
@@ -84,8 +84,8 @@ fi
 
 # Alias definitions.
 
-if [ -f ~/.bash/.bash_aliases ]; then
-    . ~/.bash/.bash_aliases
+if [ -f $HOME/.bash/.bash_aliases ]; then
+    . $HOME/.bash/.bash_aliases
 fi
 
 # enable programmable completion features (you don't need to enable
@@ -95,8 +95,8 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-if [ -f ~/.bash/.bash_completion ] ; then
-    source ~/.bash/.bash_completion
+if [ -f $HOME/.bash/.bash_completion ] ; then
+    source $HOME/.bash/.bash_completion
 fi
 
 # set PATH so it includes user's private bin(s) if it/they exist
@@ -129,7 +129,7 @@ fi
 export ROS_PREFERRED_DISTRO="indigo"
 
 #Either give absolute path, or dont' use quotes, so tilde gets expanded.
-export WORKSPACES_ROOT=~/workspaces
+export WORKSPACES_ROOT=$HOME/workspaces
 
 # For pass.
 
@@ -138,19 +138,28 @@ then
   source /etc/bash_completion.d/password-store
 fi
 
-if [ -d ~/go ];
+if [ -d $HOME/go ];
 then
   export GOPATH=$HOME/go
   export PATH=$GOPATH:$GOPATH/bin:$PATH:/usr/local/go/bin
 fi
 
-if [ -f ~/.rvm/scripts/rvm ];
+if [ -f $HOME/.rvm/scripts/rvm ];
 then
-  source ~/.rvm/scripts/rvm
+  source $HOME/.rvm/scripts/rvm
 fi
 
-if [ -f ~/.fzf.bash ];
+if [ -f $HOME/.fzf.bash ];
 then
-  source ~/.fzf.bash
+  source $HOME/.fzf.bash
   export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
 fi
+
+if [ -d $HOME/anaconda3/bin ];
+then
+  export PATH=$HOME/anaconda3/bin:$PATH
+elif [ -d $HOME/miniconda3/bin ];
+then
+  export PATH=$HOME/miniconda3/bin:$PATH
+fi
+

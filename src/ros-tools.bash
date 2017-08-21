@@ -1,7 +1,9 @@
 #!/bin/bash
 
-ROS_DISTROS="hydro \
+ROS_DISTROS="kinetic \
+   jade \
    indigo \
+   hydro \
    groovy \
    fuerte"
 
@@ -31,10 +33,6 @@ function cdroslog {
 
 function rossource {
   x=`pwd`;
-  ROS_DISTROS="hydro \
-     indigo \
-     groovy \
-     fuerte"
   # If we know where the workspaces are.
   echo "WORKSPACES_ROOT=$WORKSPACES_ROOT"
   if [[ -n $WORKSPACES_ROOT ]] && [[ $x == $WORKSPACES_ROOT* ]] ; then
