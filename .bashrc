@@ -149,6 +149,11 @@ then
   source $HOME/.rvm/scripts/rvm
 fi
 
+if [ -f $HOME/.rvm/bin  ];
+then
+  export PATH="$HOME/.rvm/bin:$PATH"
+fi
+
 if [ -f $HOME/.fzf.bash ];
 then
   source $HOME/.fzf.bash
