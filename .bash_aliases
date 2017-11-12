@@ -15,6 +15,18 @@ function suspend {
   dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Suspend
 }
 
+exists tmux && {
+  function _tmux () {
+    if [[ `tmux list-sessions 2>&1` == "failed to connect to server" ]];
+    then
+      tmux $@
+    else
+      tmux attach $@
+    fi
+  }
+  alias tm='_tmux'
+}
+
 alias ll='ls -alF'
 alias lr='ls -alR'
 alias la='ls -A'
