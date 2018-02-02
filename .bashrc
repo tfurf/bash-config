@@ -8,7 +8,7 @@
 # History options.
 HISTCONTROL=ignoredups:ignorespace:erasedups
 shopt -s histappend
-HISTIGNORE="&:ls:ll:[ ]*:$HISTIGNORE"
+HISTIGNORE=$(tr ":" "\n" <<< "&:ls:ll:[ ]*:$HISTIGNORE" | sort -u | tr "\n" ":")
 HISTSIZE=10000
 HISTFILESIZE=200000
 export HISTCONTROL HISTIGNORE HISTSIZE HISTFILESIZE
