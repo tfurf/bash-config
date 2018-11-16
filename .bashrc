@@ -9,8 +9,8 @@
 HISTCONTROL=ignoredups:ignorespace:erasedups
 shopt -s histappend
 HISTIGNORE=$(tr ":" "\n" <<< "&:ls:ll:[ ]*:$HISTIGNORE" | sort -u | tr "\n" ":")
-HISTSIZE=10000
-HISTFILESIZE=200000
+HISTSIZE=100000
+HISTFILESIZE=2000000
 export HISTCONTROL HISTIGNORE HISTSIZE HISTFILESIZE
 
 # check the window size after each command and, if necessary,
@@ -167,4 +167,9 @@ elif [ -d $HOME/miniconda3/bin ];
 then
   export PATH=$HOME/miniconda3/bin:$PATH
 fi
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
