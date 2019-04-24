@@ -9,8 +9,8 @@
 HISTCONTROL=ignoredups:ignorespace:erasedups
 shopt -s histappend
 HISTIGNORE=$(tr ":" "\n" <<< "&:ls:ll:[ ]*:$HISTIGNORE" | sort -u | tr "\n" ":")
-HISTSIZE=100000
-HISTFILESIZE=2000000
+HISTSIZE=1000000
+HISTFILESIZE=20000000
 export HISTCONTROL HISTIGNORE HISTSIZE HISTFILESIZE
 
 # check the window size after each command and, if necessary,
@@ -154,10 +154,21 @@ then
   export PATH="$HOME/.rvm/bin:$PATH"
 fi
 
+# FZF magic
 if [ -f $HOME/.fzf.bash ];
 then
   source $HOME/.fzf.bash
-  export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
+  export FZF_DEFAULT_COMMAND='ag --nocolor -g '
+  export FZF_DEFAULT_OPTS='--reverse --border'
+  export FZF_CTRL_T_OPTS="--preview 'bat {}'"
+  if [ -d $HOME/.bash/fzf-git ];
+  then
+    source $HOME/.bash/fzf-git/functions.sh
+    source $HOME/.bash/fzf-git/key-binding.bash
+  fi
+  if [[ "$TERM" = "screen"* && -n "$TMUX" ]]; then
+    export FZF_TMUX=1
+  fi
 fi
 
 if [ -d $HOME/anaconda3/bin ];
