@@ -17,7 +17,7 @@ function suspend {
 
 exists tmux && {
   function _tmux () {
-    if [[ `tmux list-sessions 2>&1` == "failed to connect to server" ]];
+    if [[ `tmux list-sessions 2>&1` == "failed to connect to server" ]] || [[ `tmux list-sessions 2>&1` == "no server running on "* ]] ;
     then
       tmux $@
     else
