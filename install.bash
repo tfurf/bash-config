@@ -24,4 +24,4 @@ for f in ${t}; do
 done;
 
 ( mkdir -p completion && cd $_ && wget https://git.zx2c4.com/password-store/plain/src/completion/pass.bash-completion )
-( git clone https:////gist.github.com/8b572b8d4b5eddd8b85e5f4d40f17236.git fzf-git/ )
+( git clone https://gist.github.com/8b572b8d4b5eddd8b85e5f4d40f17236.git fzf-git/ )
