@@ -89,6 +89,22 @@ exists wstool && {
   }
 }
 
+function cdd_  {
+  set -x
+  if exists wstool
+  then
+    cd $(wstool info --root)
+  elif exists git
+  then
+    cd $(git rev-parse --show-toplevel)
+  else
+    cd $@
+  fi
+  set +x
+}
+
+alias cdd='cdd_'
+
 [[ -f "$HOME/.bash/bin/todo-txt-cli/todo.sh" ]] && {
   export TODOTXT_DEFAULT_ACTION=ls
   TODOTXT_REPO="$HOME/todo"

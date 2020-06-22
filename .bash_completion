@@ -49,3 +49,15 @@ function alias_completion {
   done < <(alias -p | sed -Ene "s/$alias_regex/\1 '\2' '\3'/p")
   source "$tmp_file" && rm -f "$tmp_file"
 }; alias_completion
+
+_fzf_complete_pass() { ## From https://github.com/junegunn/fzf/commit/eee45a9578042c70353d83267e67b442afa13b4c
+  _fzf_complete '+m' "$@" < <(
+    local pwdir=${PASSWORD_STORE_DIR-~/.password-store/}
+    local stringsize="${#pwdir}"
+    find "$pwdir" -name "*.gpg" -print |
+        cut -c "$((stringsize + 1))"-  |
+        sed -e 's/\(.*\)\.gpg/\1/'
+  )
+}
+
+complete -F _fzf_complete_pass -o default -o bashdefault pass
