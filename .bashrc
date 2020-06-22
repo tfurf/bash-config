@@ -124,12 +124,6 @@ export ROS_PREFERRED_DISTRO="indigo"
 #Either give absolute path, or dont' use quotes, so tilde gets expanded.
 export WORKSPACES_ROOT=$HOME/workspaces
 
-# For pass.
-if [ -f "$HOME/.bash/src/pass.bash-completion" ] ;
-then
-  source "$HOME/.bash/src/pass.bash-completion"
-fi
-
 if [ -d $HOME/go ];
 then
   export GOPATH=$HOME/go
