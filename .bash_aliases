@@ -62,6 +62,7 @@ exists git && {
   alias gb='/usr/bin/git branch -va'
   alias gco='/usr/bin/git commit'
   alias gd='/usr/bin/git diff --word-diff'
+  alias gdc='/usr/bin/git diff --cached'
   alias gs='/usr/bin/git status'
   alias gr='/usr/bin/git remote -v'
   alias ga='/usr/bin/git add'

@@ -47,7 +47,6 @@ function exists {
 # Base16 Shell
 #BASE16_SHELL="$HOME/.config/base16-shell/scripts/base16-default-dark.sh"
 #[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
-
 function git_prompt()
 {
   [[ -f /usr/share/git-core/contrib/completion/git-prompt.sh ]] && source /usr/share/git-core/contrib/completion/git-prompt.sh
@@ -140,12 +139,34 @@ then
   export PATH="$HOME/.rvm/bin:$PATH"
 fi
 
+if [ -d $HOME/.local/java ];
+then
+  export CLASSPATH="$HOME/.local/java:$CLASSPATH"
+fi
+
 # FZF magic
 if [ -f $HOME/.fzf.bash ];
 then
   source $HOME/.fzf.bash
+  export FZF_DEFAULT_COMMAND='ag --hidden  -g ""'
   export FZF_DEFAULT_OPTS='--reverse --border'
   export FZF_CTRL_T_OPTS="--preview 'bat --color=always --decorations=always {}'"
+
+
+  _fzf_compgen_path() {
+      echo "$1"
+    command ag --hidden -g "$1" \
+      2> /dev/null | sed 's@^\./@@'
+  }
+
+  _fzf_compgen_dir() {
+      echo "$1"
+    command ag --hidden --ignore .git/ -g "$1" 2> /dev/null \
+        | xargs dirname \
+        | uniq \
+        | sed 's@^\./@@'
+  }
+
   if [ -d $HOME/.bash/fzf-git ];
   then
     source $HOME/.bash/fzf-git/functions.sh
@@ -153,6 +174,7 @@ then
   fi
   if [[ "$TERM" = "screen"* && -n "$TMUX" ]]; then
     export FZF_TMUX=1
+    export FZF_TMUX_OPTS="-p --height=40%"
   fi
 fi
 

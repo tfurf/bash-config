@@ -48,7 +48,7 @@ function alias_completion {
   echo "$new_completion" >> "$tmp_file"
   done < <(alias -p | sed -Ene "s/$alias_regex/\1 '\2' '\3'/p")
   source "$tmp_file" && rm -f "$tmp_file"
-}; alias_completion
+}; # alias_completion # TODO: check if this should be updated.
 
 _fzf_complete_pass() { ## From https://github.com/junegunn/fzf/commit/eee45a9578042c70353d83267e67b442afa13b4c
   _fzf_complete '+m' "$@" < <(
