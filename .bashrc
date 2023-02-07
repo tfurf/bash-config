@@ -184,6 +184,8 @@ export NVM_DIR="$HOME/.nvm"
 
 export CURL_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
 
+export PASSWORD_STORE_ENABLE_EXTENSIONS=true
+
 
 
 # >>> conda initialize >>>
@@ -199,5 +201,10 @@ else
     fi
 fi
 unset __conda_setup
+
+#eval $(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh)
+#export $(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg)
+#dbus-update-activation
+
 # <<< conda initialize <<<
 
